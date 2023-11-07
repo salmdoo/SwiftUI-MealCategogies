@@ -8,16 +8,40 @@
 import SwiftUI
 
 struct MealListView: View {
-    let mealListVM: MealListViewModel?
+    @ObservedObject var mealListVM: MealListViewModel
     
     init(urlSession: URLSession = URLSession.shared) {
         self.mealListVM = MealListViewModel(urlSession: urlSession)
     }
     
+    let columns = [GridItem(.flexible()), GridItem(.flexible())]
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ScrollView {
+            LazyVGrid(columns: columns, spacing: 10) {
+                ForEach(mealListVM.mealList, id: \.id) { item in
+                    NavigationLink {
+                        MealDetailsView()
+                    } label: {
+                        VStack{
+                            
+                            AsyncImage(url: URL(string: item.image ?? "")) { img in
+                                img.resizable()
+                                    .scaledToFill().frame(width: 100, height: 100)
+                            } placeholder: {
+                                Image(systemName: "photo")
+                            }
+
+                            Text(item.name ?? "")
+                        }
+                    }
+
+                    
+                }
+            }
+        }
             .onAppear(){
-                mealListVM?.fetchMeals()
+                mealListVM.fetchMeals()
             }
     }
         

@@ -17,12 +17,15 @@ class MealListViewModel: ObservableObject {
     
     func fetchMeals() {
         fetchDataGeneric.fetchData(urlString: "https://themealdb.com/api/json/v1/1/filter.php?c=Dessert") { result in
-            switch result {
-            case .success(let res):
-                self.mealList = res?.meals ?? []
-            case .failure(let err):
-                print(err)
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let res):
+                    self.mealList = res?.meals ?? []
+                case .failure(let err):
+                    print(err)
+                }
             }
+            
         }
         
     }
