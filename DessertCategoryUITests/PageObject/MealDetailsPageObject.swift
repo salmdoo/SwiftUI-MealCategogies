@@ -15,6 +15,6 @@ class MealDetailsPageObject {
     }
     
     var mealInstruction: XCUIElement {
-        app.staticTexts["mealInstruction"]
+        app.staticTexts["mealIngredient"]
     }
 }

@@ -13,6 +13,7 @@ struct MealDetailsView: View {
     init(urlSession: URLSession = .shared, mealId: String) {
         self.mealDetailsVM = MealDetailsViewModel(fetchData: FetchDataGeneric<MealDetails>(urlSession: urlSession), mealId: mealId)
     }
+    
     var body: some View {
         ScrollView {
             if mealDetailsVM.mealDetails == nil {
@@ -45,7 +46,7 @@ struct MealDetailsView: View {
                             .font(.subheadline)
                             .fontWeight(.heavy)
                             .padding(EdgeInsets(top: 10, leading: 0, bottom: 5, trailing: 0))
-                            .accessibilityIdentifier("mealInstruction")
+                            .accessibilityIdentifier("mealIngredient")
                         
                         ForEach(mealDetailsVM.mealDetails!.ingredients.keys.sorted(), id: \.self) { key in
                             HStack {
@@ -61,6 +62,15 @@ struct MealDetailsView: View {
                     }.padding(EdgeInsets(top: 150, leading: 10, bottom: 0, trailing: 10))
                 }
             }
+        }
+        .onRotate(perform: { _ in
+            print("Detail on rotate")
+            Task {
+                await mealDetailsVM.fetchData()
+            }
+        })
+        .onAppear(){
+            print("Detail on appear")
         }
         .alert("Important Message", isPresented: $mealDetailsVM.loadDataFailed, actions: {
             Text("Reload application")

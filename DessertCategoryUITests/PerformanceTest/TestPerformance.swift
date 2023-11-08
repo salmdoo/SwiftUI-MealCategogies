@@ -8,7 +8,7 @@
 import XCTest
 @testable import DessertCategory
 
-final class test: XCTestCase {
+final class TestPerformance: XCTestCase {
 
     private var app: XCUIApplication!
     private var mealListPageObject: MealListPageObject?

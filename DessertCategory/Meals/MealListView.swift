@@ -49,14 +49,16 @@ struct MealListView: View {
                 }
                 
             }
-            .onRotate(listenOnRotate: true, perform: { orientation in
-                if orientation.isLandscape {
-                    columns = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
-                } else {
-                    columns = [GridItem(.flexible()), GridItem(.flexible())]
-                }
-            })
+            
         }
+        .onRotate(perform: { orientation in
+            print("Meal list rotate")
+            if orientation.isLandscape {
+                columns = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
+            } else {
+                columns = [GridItem(.flexible()), GridItem(.flexible())]
+            }
+        })
         .alert("Important Message", isPresented: $mealListVM.loadDataFailed, actions: {
             Text("Reload application")
         }, message: {
