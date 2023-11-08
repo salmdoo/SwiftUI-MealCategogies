@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Meal: Decodable {
+struct Meal: Decodable, Equatable {
     let name: String?
     let image: String?
     let id: String?
@@ -24,9 +24,15 @@ struct Meal: Decodable {
         self.image = try container.decodeIfPresent(String.self, forKey: .strMealThumb)
         self.id = try container.decodeIfPresent(String.self, forKey: .idMeal)
     }
+    
+    init(id: String,name: String, image: String) {
+        self.id = id
+        self.name = name
+        self.image = image
+    }
 }
 
-struct MealList: Decodable, DecodeDataProtocol {
+struct MealList: Decodable, DecodeDataProtocol, Equatable {
     typealias T = Self
     
     let meals: [Meal]
@@ -39,6 +45,19 @@ struct MealList: Decodable, DecodeDataProtocol {
         } catch {
             return Result.failure(NetworkError.decodedFailed)
         }
+    }
+    
+    static func == (lhs: MealList, rhs: MealList) -> Bool {
+        if lhs.meals.count != rhs.meals.count {
+            return false
+        }
+        
+        for item in lhs.meals {
+            if !rhs.meals.contains(where: {$0 == item}) {
+                return false
+            }
+        }
+        return true
     }
 }
 

@@ -9,6 +9,39 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>DessertCategoryUITests.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>DessertCategoryUnitTests.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>147038022AFBC21A002B17E4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1474B6C02AFAEDEC007B5B68</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>147E4ED72AF9452000E0A907</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>147E4EFC2AF9A5FF00E0A907</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 	</dict>
 </dict>
 </plist>
