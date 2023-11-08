@@ -9,7 +9,7 @@ import Foundation
 import OSLog
 
 class MealDetailsViewModel: ObservableObject {
-    @Published var mealDetails: MealDetails? = nil
+    @Published var mealDetails: MealDetails? = MealDetails()
     @Published var loadDataFailed = false
     
     var mealId: String
@@ -35,6 +35,7 @@ class MealDetailsViewModel: ObservableObject {
             case .success(let meal):
                 if let meal {
                     self.mealDetails = meal
+                    print(self.mealDetails)
                     self.loadDataFailed = false
                 } else {
                     self.logging?.error("MealDetailsViewModel - fetchMeals - no meals are returned")

@@ -8,15 +8,16 @@
 import SwiftUI
 
 struct MealDetailsView: View {
-    @ObservedObject var mealDetailsVM: MealDetailsViewModel
+    @StateObject var mealDetailsVM: MealDetailsViewModel
+    @State var emtyMeals = false
     
-    init(urlSession: URLSession = .shared, mealId: String) {
-        self.mealDetailsVM = MealDetailsViewModel(fetchData: FetchDataGeneric<MealDetails>(urlSession: urlSession), mealId: mealId)
+    init(mealId: String, urlSession: URLSession = .shared) {
+        self._mealDetailsVM = StateObject(wrappedValue: MealDetailsViewModel(fetchData: FetchDataGeneric<MealDetails>(urlSession:urlSession), mealId: mealId))
     }
     
     var body: some View {
         ScrollView {
-            if mealDetailsVM.mealDetails == nil {
+            if mealDetailsVM.mealDetails!.name == "" {
                 EmptyView()
             }
             else {
@@ -60,15 +61,6 @@ struct MealDetailsView: View {
                         
                     }.padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
             }
-        }
-        .onRotate(perform: { _ in
-            print("Detail on rotate")
-            Task {
-                await mealDetailsVM.fetchData()
-            }
-        })
-        .onAppear(){
-            print("Detail on appear")
         }
         .alert("Important Message", isPresented: $mealDetailsVM.loadDataFailed, actions: {
             Text("Reload application")

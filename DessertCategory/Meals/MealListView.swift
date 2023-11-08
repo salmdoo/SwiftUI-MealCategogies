@@ -8,13 +8,9 @@
 import SwiftUI
 
 struct MealListView: View {
-    @ObservedObject var mealListVM: MealListViewModel
+    @StateObject var mealListVM = MealListViewModel(fetchData: FetchDataGeneric<MealList>(urlSession: URLSession.shared))
     
-    init(urlSession: URLSession = URLSession.shared) {
-        self.mealListVM = MealListViewModel(fetchData: FetchDataGeneric<MealList>(urlSession: urlSession))
-    }
-    
-    @State private var columns = [GridItem(.flexible())]
+    @State private var columns = [GridItem(.flexible()), GridItem(.flexible())]
     
     var body: some View {
         
