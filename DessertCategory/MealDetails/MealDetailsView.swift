@@ -21,21 +21,20 @@ struct MealDetailsView: View {
             }
             else {
                 LazyVStack(alignment: .leading) {
-                    AsyncImage(url: URL(string: mealDetailsVM.mealDetails!.image )) { img in
-                        img.resizable()
-                    } placeholder: {
-                        Image(systemName: "photo")
-                    }
-                    .scaledToFill()
-                    .frame(width: UIScreen.main.bounds.size.width, height: 100)
+                    HStack {
+                        AsyncImage(url: URL(string: mealDetailsVM.mealDetails!.image )) { img in
+                            img.resizable()
+                        } placeholder: {
+                            Image(systemName: "photo")
+                        }.frame(width:100, height: 100)
+                        .scaledToFill()
                     
-                    VStack (alignment: .leading){
                         Text(mealDetailsVM.mealDetails!.name)
                             .font(.title2)
                             .fontWeight(.bold)
                             .lineLimit(nil)
                             .multilineTextAlignment(.leading)
-                        
+                        }
                         Text(mealDetailsVM.mealDetails!.instructions)
                             .font(.caption)
                             .fontWeight(.light)
@@ -45,7 +44,7 @@ struct MealDetailsView: View {
                         Text("Ingredient")
                             .font(.subheadline)
                             .fontWeight(.heavy)
-                            .padding(EdgeInsets(top: 10, leading: 0, bottom: 5, trailing: 0))
+                            .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
                             .accessibilityIdentifier("mealIngredient")
                         
                         ForEach(mealDetailsVM.mealDetails!.ingredients.keys.sorted(), id: \.self) { key in
@@ -59,8 +58,7 @@ struct MealDetailsView: View {
                             
                         }
                         
-                    }.padding(EdgeInsets(top: 150, leading: 10, bottom: 0, trailing: 10))
-                }
+                    }.padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
             }
         }
         .onRotate(perform: { _ in
