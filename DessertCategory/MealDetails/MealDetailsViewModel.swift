@@ -12,38 +12,33 @@ class MealDetailsViewModel: ObservableObject {
     @Published var mealDetails: MealDetails? = MealDetails()
     @Published var loadDataFailed = false
     
-    var mealId: String
-    
-    private let fetchDataGeneric: FetchDataGeneric<MealDetails>?
-    private let logging: Logger?
+    private let fetchDataGeneric: FetchMealDetailsProtocol
+    private let logging: Logger
     
     var networkReponseString: String  = NSLocalizedString("No message", comment: "No message")
     
-    init(fetchData: any FetchDataProtocol, mealId: String) {
-        fetchDataGeneric = fetchData as? FetchDataGeneric<MealDetails>
-        self.mealId = mealId
+    init(fetchData: FetchMealDetailsProtocol) {
+        fetchDataGeneric = fetchData
         logging = HandleLogging.instance
     }
     
     func fetchData() async {
-       let result = await fetchDataGeneric?.fetchData(urlString: APIEndpoint.getDesertDetails(mealId))
+        let result = await fetchDataGeneric.fetchData()
         
         DispatchQueue.main.async {
-            guard let result else {return}
             
             switch result {
             case .success(let meal):
                 if let meal {
                     self.mealDetails = meal
-                    print(self.mealDetails)
                     self.loadDataFailed = false
                 } else {
-                    self.logging?.error("MealDetailsViewModel - fetchMeals - no meals are returned")
+                    self.logging.error("MealDetailsViewModel - fetchMeals - no meals are returned")
                     self.networkReponseString = NetworkError.dataNotFound.localizedString
                     self.loadDataFailed = true
                 }
             case .failure(let err):
-                self.logging?.error("MealListViewModel - fetchMeals - \(err)")
+                self.logging.error("MealListViewModel - fetchMeals - \(err)")
                 self.networkReponseString = err.localizedString
                 self.loadDataFailed = true
             }

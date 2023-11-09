@@ -7,42 +7,23 @@
 
 import Foundation
 
-enum NetworkError: Error {
-    case invalidUrl
-    case dataNotFound
-    case decodedFailed
-}
-extension NetworkError: LocalizedError {
-    public var localizedString: String {
-        switch self {
-        case .dataNotFound:
-            return NSLocalizedString("Data not found. Please try later.", comment: "No Data")
-        case .decodedFailed, .invalidUrl:
-            return NSLocalizedString("Server request failed. Please try later.", comment: "Invalid URL or Failed Decoded Data")
-        }
-    }
-}
-
-protocol FetchDataProtocol {
-    associatedtype T
-    func fetchData(urlString: String) async -> Result<T?, NetworkError>
-    
-}
 
 protocol DecodeDataProtocol: Decodable {
     associatedtype T
     static func decodeData(data: Data) -> Result<T, NetworkError>
 }
 
-struct FetchDataGeneric<T>: FetchDataProtocol where T: DecodeDataProtocol {
+struct FetchDataGeneric<T> where T: DecodeDataProtocol {
     private let urlSession: URLSession?
+    private let urlApi: String
     
-    init(urlSession: URLSession) {
+    init(urlSession: URLSession, urlApi: String) {
         self.urlSession = urlSession
+        self.urlApi = urlApi
     }
     
-    func fetchData(urlString: String) async -> Result<T?, NetworkError> {
-        guard let url = URL(string: urlString) else {
+    func fetchData() async -> Result<T?, NetworkError> {
+        guard let url = URL(string: urlApi) else {
             return Result.failure(NetworkError.invalidUrl)
         }
         

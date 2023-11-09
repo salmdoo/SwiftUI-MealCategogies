@@ -6,13 +6,29 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct MealDetailsView: View {
-    @StateObject var mealDetailsVM: MealDetailsViewModel
-    @State var emtyMeals = false
     
-    init(mealId: String, urlSession: URLSession = .shared) {
-        self._mealDetailsVM = StateObject(wrappedValue: MealDetailsViewModel(fetchData: FetchDataGeneric<MealDetails>(urlSession:urlSession), mealId: mealId))
+    @Environment(\.managedObjectContext) private var viewContext
+    
+    @StateObject var mealDetailsVM: MealDetailsViewModel
+    @State var fetcherObject: FetchMealDetailsProtocol? = nil
+    
+    private var mealId: String
+    
+    init(mealId: String) {
+        self.mealId = mealId
+        let fetcher: FetchMealDetailsProtocol
+       
+        let networkMonitor = NetworkMonitor.instance
+        if networkMonitor.isConnected {
+            fetcher = MealDetailsAPIFetcher(urlSession: .shared, mealId: mealId)
+        } else {
+            fetcher = MealDetailsCodeDataFetcher(mealId: mealId)
+        }
+        
+        self._mealDetailsVM = StateObject(wrappedValue:MealDetailsViewModel(fetchData: fetcher))
     }
     
     var body: some View {
@@ -42,6 +58,7 @@ struct MealDetailsView: View {
                             .multilineTextAlignment(.leading)
                             .lineLimit(nil)
                         
+                    if mealDetailsVM.mealDetails!.ingredients.count > 0 {
                         Text("Ingredient")
                             .font(.subheadline)
                             .fontWeight(.heavy)
@@ -58,6 +75,7 @@ struct MealDetailsView: View {
                             }.padding(EdgeInsets(top: 0, leading: 5, bottom: 5, trailing: 5))
                             
                         }
+                    }
                         
                     }.padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
             }
@@ -72,6 +90,20 @@ struct MealDetailsView: View {
         })
         .task {
             await mealDetailsVM.fetchData()
+            saveMealDetails()
+        }
+    }
+    
+    private func saveMealDetails(){
+        let mealDetails = MealCoreModel(context: self.viewContext)
+        mealDetails.id = self.mealId
+        mealDetails.name = mealDetailsVM.mealDetails?.name
+        mealDetails.instructions = mealDetailsVM.mealDetails?.instructions
+        
+        do {
+            try self.viewContext.save()
+        } catch {
+            print (error)
         }
     }
 }

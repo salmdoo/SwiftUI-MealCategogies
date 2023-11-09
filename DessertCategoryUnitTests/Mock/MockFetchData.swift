@@ -8,7 +8,7 @@
 import Foundation
 @testable import DessertCategory
 
-class MockFetchData<T>: FetchDataProtocol {
+class MockFetchData<T> {
     var mockData: T?
     var mockError: NetworkError?
     

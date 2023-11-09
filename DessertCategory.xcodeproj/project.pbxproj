@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		147037FE2AFBA5BB002B17E4 /* HandleLogging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147037FD2AFBA5BB002B17E4 /* HandleLogging.swift */; };
 		147038102AFBCEF4002B17E4 /* RotateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1470380F2AFBCEF4002B17E4 /* RotateView.swift */; };
+		147038142AFC1FDA002B17E4 /* MealDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 147038122AFC1FDA002B17E4 /* MealDataModel.xcdatamodeld */; };
+		147038372AFC39E2002B17E4 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147038362AFC39E2002B17E4 /* Persistence.swift */; };
+		147038392AFC835A002B17E4 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147038382AFC835A002B17E4 /* NetworkError.swift */; };
+		1470383B2AFC839D002B17E4 /* MealFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1470383A2AFC839D002B17E4 /* MealFetcher.swift */; };
+		1470383D2AFC83BA002B17E4 /* MealDetailsFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1470383C2AFC83BA002B17E4 /* MealDetailsFetcher.swift */; };
+		147038402AFD0635002B17E4 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1470383F2AFD0635002B17E4 /* NetworkMonitor.swift */; };
 		1474B6B02AFA85DA007B5B68 /* TestMealDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1474B6AF2AFA85DA007B5B68 /* TestMealDetails.swift */; };
 		1474B6B22AFA8C19007B5B68 /* TestMealModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1474B6B12AFA8C19007B5B68 /* TestMealModel.swift */; };
 		1474B6B42AFA90C0007B5B68 /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1474B6B32AFA90C0007B5B68 /* APIEndpoint.swift */; };
@@ -55,6 +61,12 @@
 		147037FD2AFBA5BB002B17E4 /* HandleLogging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandleLogging.swift; sourceTree = "<group>"; };
 		1470380E2AFBC27C002B17E4 /* DessertCategory.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = DessertCategory.xctestplan; sourceTree = "<group>"; };
 		1470380F2AFBCEF4002B17E4 /* RotateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotateView.swift; sourceTree = "<group>"; };
+		147038132AFC1FDA002B17E4 /* MealDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MealDataModel.xcdatamodel; sourceTree = "<group>"; };
+		147038362AFC39E2002B17E4 /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		147038382AFC835A002B17E4 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		1470383A2AFC839D002B17E4 /* MealFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealFetcher.swift; sourceTree = "<group>"; };
+		1470383C2AFC83BA002B17E4 /* MealDetailsFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailsFetcher.swift; sourceTree = "<group>"; };
+		1470383F2AFD0635002B17E4 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		1474B6AF2AFA85DA007B5B68 /* TestMealDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMealDetails.swift; sourceTree = "<group>"; };
 		1474B6B12AFA8C19007B5B68 /* TestMealModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMealModel.swift; sourceTree = "<group>"; };
 		1474B6B32AFA90C0007B5B68 /* APIEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoint.swift; sourceTree = "<group>"; };
@@ -114,8 +126,28 @@
 				1474B6B32AFA90C0007B5B68 /* APIEndpoint.swift */,
 				147E4EEB2AF9466B00E0A907 /* FetchDataGeneric.swift */,
 				147037FD2AFBA5BB002B17E4 /* HandleLogging.swift */,
+				147038382AFC835A002B17E4 /* NetworkError.swift */,
+				1470383A2AFC839D002B17E4 /* MealFetcher.swift */,
+				1470383C2AFC83BA002B17E4 /* MealDetailsFetcher.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		147038112AFC1FBE002B17E4 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				147038362AFC39E2002B17E4 /* Persistence.swift */,
+				147038122AFC1FDA002B17E4 /* MealDataModel.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		1470383E2AFD05D4002B17E4 /* NetworkMonitor */ = {
+			isa = PBXGroup;
+			children = (
+				1470383F2AFD0635002B17E4 /* NetworkMonitor.swift */,
+			);
+			path = NetworkMonitor;
 			sourceTree = "<group>";
 		};
 		1474B6AE2AFA8587007B5B68 /* Mock */ = {
@@ -196,6 +228,8 @@
 		147E4EDA2AF9452000E0A907 /* DessertCategory */ = {
 			isa = PBXGroup;
 			children = (
+				1470383E2AFD05D4002B17E4 /* NetworkMonitor */,
+				147038112AFC1FBE002B17E4 /* CoreData */,
 				1470380F2AFBCEF4002B17E4 /* RotateView.swift */,
 				147E4EEA2AF9462F00E0A907 /* MealDetails */,
 				147E4EE92AF9462500E0A907 /* Meals */,
@@ -389,15 +423,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				147038142AFC1FDA002B17E4 /* MealDataModel.xcdatamodeld in Sources */,
 				147E4EDE2AF9452000E0A907 /* ContentView.swift in Sources */,
 				147037FE2AFBA5BB002B17E4 /* HandleLogging.swift in Sources */,
+				147038372AFC39E2002B17E4 /* Persistence.swift in Sources */,
 				147E4EF82AF99A2600E0A907 /* MealDetailsView.swift in Sources */,
 				147E4EEC2AF9466B00E0A907 /* FetchDataGeneric.swift in Sources */,
 				147E4EEE2AF9510A00E0A907 /* MealModel.swift in Sources */,
+				147038402AFD0635002B17E4 /* NetworkMonitor.swift in Sources */,
 				147E4EF42AF9943D00E0A907 /* MealDetailsModel.swift in Sources */,
 				147E4EDC2AF9452000E0A907 /* DessertCategoryApp.swift in Sources */,
+				147038392AFC835A002B17E4 /* NetworkError.swift in Sources */,
 				147E4EF02AF95CC500E0A907 /* MealListViewModel.swift in Sources */,
 				147E4EF62AF9997A00E0A907 /* MealDetailsViewModel.swift in Sources */,
+				1470383D2AFC83BA002B17E4 /* MealDetailsFetcher.swift in Sources */,
+				1470383B2AFC839D002B17E4 /* MealFetcher.swift in Sources */,
 				147038102AFBCEF4002B17E4 /* RotateView.swift in Sources */,
 				147E4EF22AF95CF500E0A907 /* MealListView.swift in Sources */,
 				1474B6B42AFA90C0007B5B68 /* APIEndpoint.swift in Sources */,
@@ -719,6 +759,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		147038122AFC1FDA002B17E4 /* MealDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				147038132AFC1FDA002B17E4 /* MealDataModel.xcdatamodel */,
+			);
+			currentVersion = 147038132AFC1FDA002B17E4 /* MealDataModel.xcdatamodel */;
+			path = MealDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 147E4ED02AF9452000E0A907 /* Project object */;
 }

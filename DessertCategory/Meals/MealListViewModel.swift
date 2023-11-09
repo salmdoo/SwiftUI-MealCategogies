@@ -14,23 +14,21 @@ class MealListViewModel: ObservableObject {
     
     var networkReponseString: String  = NSLocalizedString("No message", comment: "No message")
     
-    private let fetchDataGeneric: FetchDataGeneric<MealList>?
+    private let fetchDataGeneric: FetchMealsProtocol
     private let logging: Logger?
 
-    init(fetchData: any FetchDataProtocol) {
+    init(fetchData: FetchMealsProtocol) {
         logging = HandleLogging.instance
-        self.fetchDataGeneric = fetchData as? FetchDataGeneric<MealList>
+        self.fetchDataGeneric = fetchData
         Task {
             await fetchMeals()
         }
     }
     
     func fetchMeals() async {
-        let result = await fetchDataGeneric?.fetchData(urlString: APIEndpoint.getDeserts)
+        let result = await fetchDataGeneric.fetchData()
         
         DispatchQueue.main.async {
-            guard let result else { return }
-            
             switch result {
             case .success(let res):
                 if let meals = res?.meals {

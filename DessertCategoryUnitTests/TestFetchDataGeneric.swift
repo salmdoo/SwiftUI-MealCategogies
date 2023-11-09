@@ -68,9 +68,9 @@ final class TestFetchDataGeneric: XCTestCase {
         MockFetchDataGeneric.responseError = NetworkError.invalidUrl
         
         let expectation = self.expectation(description: "Fetch Data is failed because of invalidUrl")
-        let fetchDataGeneric = FetchDataGeneric<TestObject>(urlSession: urlSession!)
+        let fetchDataGeneric = FetchDataGeneric<TestObject>(urlSession: urlSession!, urlApi: "String")
         
-        let result = await fetchDataGeneric.fetchData(urlString: "")
+        let result = await fetchDataGeneric.fetchData()
         
         switch result {
         case .failure(let err):
@@ -87,9 +87,9 @@ final class TestFetchDataGeneric: XCTestCase {
         MockFetchDataGeneric.responseError = NetworkError.dataNotFound
         
         let expectation = self.expectation(description: "Fetch Data is failed because of dataNotFound")
-        let fetchDataGeneric = FetchDataGeneric<TestObject>(urlSession: urlSession!)
+        let fetchDataGeneric = FetchDataGeneric<TestObject>(urlSession: urlSession!, urlApi: "https://example.com")
         
-        let result = await fetchDataGeneric.fetchData(urlString: "https://example.com")
+        let result = await fetchDataGeneric.fetchData()
         switch result {
             case .failure(let err):
                 XCTAssertEqual(NetworkError.dataNotFound, err)

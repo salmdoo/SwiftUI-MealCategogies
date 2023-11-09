@@ -8,9 +8,22 @@
 import SwiftUI
 
 struct MealListView: View {
-    @StateObject var mealListVM = MealListViewModel(fetchData: FetchDataGeneric<MealList>(urlSession: URLSession.shared))
+    @StateObject var mealListVM: MealListViewModel
     
     @State private var columns = [GridItem(.flexible()), GridItem(.flexible())]
+    
+    init(){
+        let fetcher: FetchMealsProtocol
+       
+        let networkMonitor = NetworkMonitor.instance
+        if networkMonitor.isConnected {
+            fetcher = MealAPIFetcher(urlSession: URLSession.shared)
+        } else {
+            fetcher = MealCodeDataFetcher()
+        }
+        
+        self._mealListVM = StateObject(wrappedValue:MealListViewModel(fetchData: fetcher))
+    }
     
     var body: some View {
         
@@ -43,12 +56,9 @@ struct MealListView: View {
                         
                     }
                 }
-                
             }
-            
         }
         .onRotate(perform: { orientation in
-            print("Meal list rotate")
             if orientation.isLandscape {
                 columns = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
             } else {
@@ -63,7 +73,6 @@ struct MealListView: View {
         .refreshable(action: {
             await mealListVM.fetchMeals()
         })
-        
         .accessibilityIdentifier("mealScrollListView")
         
     }
