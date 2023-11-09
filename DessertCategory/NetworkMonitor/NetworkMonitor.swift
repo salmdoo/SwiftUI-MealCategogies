@@ -9,16 +9,24 @@ import Foundation
 
 import Network
 
-class NetworkMonitor: ObservableObject {
+class NetworkMonitor {
     static let instance = NetworkMonitor()
     private let networkMonitor = NWPathMonitor()
     private let workerQueue = DispatchQueue(label: "Monitor")
-    @Published var isConnected = false
+    
+    var isConnected: Bool {
+        didSet {
+            print("Network status changed: \(isConnected ? "Connected" : "Disconnected") - \(isConnected)")
+        }
+    }
     
     private init() {
+        isConnected = false
+        
+        networkMonitor.start(queue: workerQueue)
         networkMonitor.pathUpdateHandler = { path in
             self.isConnected = path.status == .satisfied
         }
-        networkMonitor.start(queue: workerQueue)
+        
     }
 }

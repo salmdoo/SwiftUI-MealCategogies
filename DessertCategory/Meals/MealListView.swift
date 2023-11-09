@@ -26,7 +26,6 @@ struct MealListView: View {
     }
     
     var body: some View {
-        
         ScrollView {
             LazyVGrid(columns: columns, spacing: 10) {
                 ForEach(mealListVM.mealList, id: \.id) { item in
@@ -59,6 +58,7 @@ struct MealListView: View {
             }
         }
         .onRotate(perform: { orientation in
+            
             if orientation.isLandscape {
                 columns = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
             } else {
@@ -73,9 +73,9 @@ struct MealListView: View {
         .refreshable(action: {
             await mealListVM.fetchMeals()
         })
-        .accessibilityIdentifier("mealScrollListView")
-        
+    .accessibilityIdentifier("mealScrollListView")
     }
+        
         
 }
 
