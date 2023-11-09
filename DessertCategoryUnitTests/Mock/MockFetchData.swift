@@ -8,11 +8,12 @@
 import Foundation
 @testable import DessertCategory
 
-class MockFetchData<T> {
-    var mockData: T?
+class MockFetchMealData: FetchMealsProtocol {
+    
+    var mockData: DessertCategory.MealList?
     var mockError: NetworkError?
     
-    func fetchData(urlString: String) async -> Result<T?, DessertCategory.NetworkError> {
+    func fetchData() async -> Result<DessertCategory.MealList?, DessertCategory.NetworkError> {
         if let err = mockError {
             return Result.failure(err)
         } else {

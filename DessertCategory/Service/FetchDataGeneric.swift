@@ -14,7 +14,7 @@ protocol DecodeDataProtocol: Decodable {
 }
 
 struct FetchDataGeneric<T> where T: DecodeDataProtocol {
-    private let urlSession: URLSession?
+    private let urlSession: URLSession
     private let urlApi: String
     
     init(urlSession: URLSession, urlApi: String) {
@@ -27,7 +27,7 @@ struct FetchDataGeneric<T> where T: DecodeDataProtocol {
             return Result.failure(NetworkError.invalidUrl)
         }
         
-        if let (data, _) = try? await urlSession?.data(from: url) {
+        if let (data, _) = try? await urlSession.data(from: url) {
             let decodedData = T.decodeData(data: data)
             switch decodedData {
             case .success(let res):
@@ -40,3 +40,9 @@ struct FetchDataGeneric<T> where T: DecodeDataProtocol {
         }
     }
 }
+
+public protocol URLSessionProtocol {
+    func data(from url: URL) async throws -> (Data, URLResponse)
+}
+
+extension URLSession: URLSessionProtocol { }

@@ -13,13 +13,11 @@ struct MealListView: View {
     @State private var columns = [GridItem(.flexible()), GridItem(.flexible())]
     
     init(){
-        let fetcher: FetchMealsProtocol
+        var fetcher: FetchMealsProtocol = MealCodeDataFetcher()
        
         let networkMonitor = NetworkMonitor.instance
         if networkMonitor.isConnected {
             fetcher = MealAPIFetcher(urlSession: URLSession.shared)
-        } else {
-            fetcher = MealCodeDataFetcher()
         }
         
         self._mealListVM = StateObject(wrappedValue:MealListViewModel(fetchData: fetcher))

@@ -281,9 +281,9 @@
 		147E4EFE2AF9A5FF00E0A907 /* DessertCategoryUnitTests */ = {
 			isa = PBXGroup;
 			children = (
+				1474B6AE2AFA8587007B5B68 /* Mock */,
 				1474B6B92AFAA9F8007B5B68 /* TestMeal */,
 				1474B6BA2AFAAA07007B5B68 /* TestMealDetails */,
-				1474B6AE2AFA8587007B5B68 /* Mock */,
 				147E4EFF2AF9A5FF00E0A907 /* TestFetchDataGeneric.swift */,
 			);
 			path = DessertCategoryUnitTests;

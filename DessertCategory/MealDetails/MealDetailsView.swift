@@ -15,13 +15,11 @@ struct MealDetailsView: View {
     
     init(mealId: String) {
         self.mealId = mealId
-        let fetcher: FetchMealDetailsProtocol
+        var fetcher: FetchMealDetailsProtocol = MealDetailsCodeDataFetcher(mealId: mealId)
        
         let networkMonitor = NetworkMonitor.instance
         if networkMonitor.isConnected {
             fetcher = MealDetailsAPIFetcher(urlSession: .shared, mealId: mealId)
-        } else {
-            fetcher = MealDetailsCodeDataFetcher(mealId: mealId)
         }
         
         self._mealDetailsVM = StateObject(wrappedValue:MealDetailsViewModel(mealId: mealId, fetchData: fetcher))

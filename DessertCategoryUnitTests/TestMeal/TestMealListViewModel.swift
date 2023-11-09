@@ -10,25 +10,41 @@ import XCTest
 
 final class TestMealListViewModel: XCTestCase {
 
-    func testTestMealListViewModelSuccess(){
+    func testTestMealListViewModelFailure() async {
+        let mockFetchData = MockFetchMealData()
+        mockFetchData.mockError = NetworkError.dataNotFound
+
+        let viewModel = MealListViewModel(fetchData: mockFetchData)
+
+        let expectation = self.expectation(description: "Fetch Data is failed because of invalidUrl")
+        await viewModel.fetchMeals()
+
+        DispatchQueue.main.async {
+            XCTAssertEqual(true, viewModel.loadDataFailed)
+            expectation.fulfill()
+        }
+
+        await self.fulfillment(of: [expectation], timeout: 10)
+    }
+    
+    func testTestMealListViewModelSuccess() async {
         let mealList = [Meal(id: "1", name: "1", image: "http:/sample.com")]
         let mockData = MealList(meals: mealList)
 
-        let mockFetchData = MockFetchData<MealList>()
+        let mockFetchData = MockFetchMealData()
         mockFetchData.mockData = mockData
 
         let viewModel = MealListViewModel(fetchData: mockFetchData)
 
         let expectation = self.expectation(description: "Fetch Data is failed because of invalidUrl")
-        viewModel.fetchMeals()
+        await viewModel.fetchMeals()
 
         DispatchQueue.main.async {
             XCTAssertEqual(mealList, viewModel.mealList)
             expectation.fulfill()
         }
 
-
-        self.wait(for: [expectation], timeout: 10)
+        await self.fulfillment(of: [expectation], timeout: 10)
     }
 
 }
