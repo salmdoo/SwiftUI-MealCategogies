@@ -14,7 +14,7 @@ protocol FetchMealsProtocol {
 
 struct MealAPIFetcher: FetchMealsProtocol {
     
-    private var fetchDataGeneric: FetchDataGeneric<MealList>?
+    private var fetchDataGeneric: FetchDataGeneric<MealList>
     
     init (urlSession: URLSession)
     {
@@ -22,7 +22,7 @@ struct MealAPIFetcher: FetchMealsProtocol {
     }
     
     func fetchData() async -> Result<MealList?, NetworkError> {
-        await fetchDataGeneric!.fetchData()
+        await fetchDataGeneric.fetchData()
     }
 }
 

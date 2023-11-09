@@ -9,29 +9,30 @@ import Foundation
 import OSLog
 
 class MealDetailsViewModel: ObservableObject {
-    @Published var mealDetails: MealDetails? = MealDetails()
+    @Published var mealDetails: MealDetails
     @Published var loadDataFailed = false
     
-    private let fetchDataGeneric: FetchMealDetailsProtocol
+    private let fetchData: FetchMealDetailsProtocol
     private let logging: Logger
     
     var networkReponseString: String  = NSLocalizedString("No message", comment: "No message")
     
-    init(fetchData: FetchMealDetailsProtocol) {
-        fetchDataGeneric = fetchData
+    init(mealId: String, fetchData: FetchMealDetailsProtocol) {
+        self.fetchData = fetchData
+        mealDetails = MealDetails(id: mealId)
         logging = HandleLogging.instance
     }
     
-    func fetchData() async {
-        let result = await fetchDataGeneric.fetchData()
+    func fetchMealDetails() async {
+        let result = await fetchData.fetchData()
         
         DispatchQueue.main.async {
-            
             switch result {
             case .success(let meal):
                 if let meal {
                     self.mealDetails = meal
                     self.loadDataFailed = false
+                    self.cacheMeal(mealDetails: meal)
                 } else {
                     self.logging.error("MealDetailsViewModel - fetchMeals - no meals are returned")
                     self.networkReponseString = NetworkError.dataNotFound.localizedString
@@ -42,6 +43,13 @@ class MealDetailsViewModel: ObservableObject {
                 self.networkReponseString = err.localizedString
                 self.loadDataFailed = true
             }
+        }
+    }
+    
+    private func cacheMeal(mealDetails: MealDetails){
+        if fetchData is MealDetailsAPIFetcher {
+            let persistence = PersistenceController.instance
+            persistence.save(meal: mealDetails)
         }
     }
 }

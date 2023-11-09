@@ -12,21 +12,15 @@ import Network
 class NetworkMonitor {
     static let instance = NetworkMonitor()
     private let networkMonitor = NWPathMonitor()
-    private let workerQueue = DispatchQueue(label: "Monitor")
+    private let workerQueue = DispatchQueue(label: "NetworkMonitor")
     
-    var isConnected: Bool {
-        didSet {
-            print("Network status changed: \(isConnected ? "Connected" : "Disconnected") - \(isConnected)")
-        }
-    }
+    var isConnected = false
     
     private init() {
-        isConnected = false
-        
-        networkMonitor.start(queue: workerQueue)
         networkMonitor.pathUpdateHandler = { path in
             self.isConnected = path.status == .satisfied
         }
         
+        networkMonitor.start(queue: workerQueue)
     }
 }

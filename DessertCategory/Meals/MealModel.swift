@@ -20,9 +20,9 @@ struct Meal: Decodable, Equatable {
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.name = try container.decodeIfPresent(String.self, forKey: .strMeal)
-        self.image = try container.decodeIfPresent(String.self, forKey: .strMealThumb)
-        self.id = try container.decodeIfPresent(String.self, forKey: .idMeal)
+        self.name = try container.decode(String.self, forKey: .strMeal)
+        self.image = try container.decode(String.self, forKey: .strMealThumb)
+        self.id = try container.decode(String.self, forKey: .idMeal)
     }
     
     init(id: String,name: String, image: String) {
@@ -32,20 +32,8 @@ struct Meal: Decodable, Equatable {
     }
 }
 
-struct MealList: Decodable, DecodeDataProtocol, Equatable {
-    typealias T = Self
-    
+struct MealList: Decodable, Equatable {
     let meals: [Meal]
-    
-    static func decodeData(data: Data) -> Result<T, NetworkError> {
-        do
-        {
-            let decodedData = try JSONDecoder().decode(T.self, from: data)
-            return Result.success(decodedData)
-        } catch {
-            return Result.failure(NetworkError.decodedFailed)
-        }
-    }
     
     static func == (lhs: MealList, rhs: MealList) -> Bool {
         if lhs.meals.count != rhs.meals.count {
@@ -58,6 +46,19 @@ struct MealList: Decodable, DecodeDataProtocol, Equatable {
             }
         }
         return true
+    }
+}
+extension MealList: DecodeDataProtocol {
+    
+    typealias T = Self
+    static func decodeData(data: Data) -> Result<T, NetworkError> {
+        do
+        {
+            let decodedData = try JSONDecoder().decode(T.self, from: data)
+            return Result.success(decodedData)
+        } catch {
+            return Result.failure(NetworkError.decodedFailed)
+        }
     }
 }
 

@@ -15,7 +15,7 @@ class MealListViewModel: ObservableObject {
     var networkReponseString: String  = NSLocalizedString("No message", comment: "No message")
     
     private let fetchDataGeneric: FetchMealsProtocol
-    private let logging: Logger?
+    private let logging: Logger
 
     init(fetchData: FetchMealsProtocol) {
         logging = HandleLogging.instance
@@ -32,15 +32,15 @@ class MealListViewModel: ObservableObject {
             switch result {
             case .success(let res):
                 if let meals = res?.meals {
-                    self.mealList = meals.sorted(by: { $0.name! < $1.name! })
+                    self.mealList = meals.filter({ $0.name != nil }).sorted(by: { $0.name! < $1.name! })
                     self.loadDataFailed = false
                 } else {
-                    self.logging?.error("MealListViewModel - fetchMeals - no meals are returned")
+                    self.logging.error("MealListViewModel - fetchMeals - no meals are returned")
                     self.networkReponseString = NetworkError.dataNotFound.localizedString
                     self.loadDataFailed = true
                 }
             case .failure(let err):
-                self.logging?.error("MealListViewModel - fetchMeals - \(err)")
+                self.logging.error("MealListViewModel - fetchMeals - \(err)")
                 self.networkReponseString = err.localizedString
                 self.loadDataFailed = true
             }

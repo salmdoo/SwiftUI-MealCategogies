@@ -127,8 +127,6 @@
 				147E4EEB2AF9466B00E0A907 /* FetchDataGeneric.swift */,
 				147037FD2AFBA5BB002B17E4 /* HandleLogging.swift */,
 				147038382AFC835A002B17E4 /* NetworkError.swift */,
-				1470383A2AFC839D002B17E4 /* MealFetcher.swift */,
-				1470383C2AFC83BA002B17E4 /* MealDetailsFetcher.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -148,6 +146,14 @@
 				1470383F2AFD0635002B17E4 /* NetworkMonitor.swift */,
 			);
 			path = NetworkMonitor;
+			sourceTree = "<group>";
+		};
+		147038412AFD47B5002B17E4 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				1470380F2AFBCEF4002B17E4 /* RotateView.swift */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 		1474B6AE2AFA8587007B5B68 /* Mock */ = {
@@ -228,12 +234,12 @@
 		147E4EDA2AF9452000E0A907 /* DessertCategory */ = {
 			isa = PBXGroup;
 			children = (
+				147038412AFD47B5002B17E4 /* Utility */,
 				1470383E2AFD05D4002B17E4 /* NetworkMonitor */,
 				147038112AFC1FBE002B17E4 /* CoreData */,
-				1470380F2AFBCEF4002B17E4 /* RotateView.swift */,
-				147E4EEA2AF9462F00E0A907 /* MealDetails */,
-				147E4EE92AF9462500E0A907 /* Meals */,
 				147037FC2AFBA59F002B17E4 /* Service */,
+				147E4EE92AF9462500E0A907 /* Meals */,
+				147E4EEA2AF9462F00E0A907 /* MealDetails */,
 				147E4EDB2AF9452000E0A907 /* DessertCategoryApp.swift */,
 				147E4EDD2AF9452000E0A907 /* ContentView.swift */,
 				147E4EDF2AF9452100E0A907 /* Assets.xcassets */,
@@ -253,6 +259,7 @@
 		147E4EE92AF9462500E0A907 /* Meals */ = {
 			isa = PBXGroup;
 			children = (
+				1470383A2AFC839D002B17E4 /* MealFetcher.swift */,
 				147E4EED2AF9510A00E0A907 /* MealModel.swift */,
 				147E4EEF2AF95CC500E0A907 /* MealListViewModel.swift */,
 				147E4EF12AF95CF500E0A907 /* MealListView.swift */,
@@ -263,6 +270,7 @@
 		147E4EEA2AF9462F00E0A907 /* MealDetails */ = {
 			isa = PBXGroup;
 			children = (
+				1470383C2AFC83BA002B17E4 /* MealDetailsFetcher.swift */,
 				147E4EF32AF9943D00E0A907 /* MealDetailsModel.swift */,
 				147E4EF52AF9997A00E0A907 /* MealDetailsViewModel.swift */,
 				147E4EF72AF99A2600E0A907 /* MealDetailsView.swift */,

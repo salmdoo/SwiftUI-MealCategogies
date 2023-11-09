@@ -11,7 +11,6 @@ import CoreData
 
 protocol FetchMealDetailsProtocol {
     func fetchData() async -> Result<MealDetails?, NetworkError>
-    
 }
 
 struct MealDetailsAPIFetcher: FetchMealDetailsProtocol {
@@ -38,7 +37,7 @@ struct MealDetailsCodeDataFetcher: FetchMealDetailsProtocol {
         print(mealId)
         switch result {
         case .success(let res):
-            let meal = res.filter { $0.id == mealId }.map { MealDetails(name: $0.name ?? "" , instructions: $0.instructions ?? "", image: $0.image ?? "", ingredients: [:]) }.first
+            let meal = res.filter { $0.id == mealId }.map { MealDetails(id: $0.id ?? "", name: $0.name ?? "" , instructions: $0.instructions ?? "", image: $0.image ?? "", ingredients: [:]) }.first
             return .success(meal)
         case .failure(let err):
             return .failure(err)

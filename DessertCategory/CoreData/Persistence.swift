@@ -41,7 +41,7 @@ struct PersistenceController {
     }
     
     
-    func save(mealId: String, meal: MealDetails){
+    func save(meal: MealDetails){
         let context = container.viewContext
         
         let results = fetchData()
@@ -49,7 +49,7 @@ struct PersistenceController {
         switch results {
         case .failure(_):
             let mealDetails = MealCoreModel(context: context)
-            mealDetails.id = mealId
+            mealDetails.id = meal.id
             mealDetails.name = meal.name
             mealDetails.instructions = meal.instructions
             mealDetails.image = meal.image
@@ -57,7 +57,7 @@ struct PersistenceController {
             do {
                 try context.save()
             } catch {
-                logging.error("PersistenceController - save() - Cannot save meal with meal id \(mealId) ")
+                logging.error("PersistenceController - save() - Cannot save meal with meal id \(meal.id) ")
             }
         case .success(_):
             logging.error("PersistenceController - save() - Do not save becase meal exists")

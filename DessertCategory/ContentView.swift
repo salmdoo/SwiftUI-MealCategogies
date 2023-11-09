@@ -9,6 +9,8 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
+    let networkMonitor = NetworkMonitor.instance
+    
     var body: some View {
         NavigationView {
             MealListView()

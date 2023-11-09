@@ -58,7 +58,6 @@ struct MealListView: View {
             }
         }
         .onRotate(perform: { orientation in
-            
             if orientation.isLandscape {
                 columns = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
             } else {
