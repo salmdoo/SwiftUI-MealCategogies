@@ -1,12 +1,7 @@
 # Meal Categories
 
-### Requirement
+### Product objectives
 The application provides users with a seamless experience, empowering them to effortlessly explore a diverse array of recipes. It presents comprehensive details, including instructions and a comprehensive list of ingredients, enhancing the user's culinary journey with a wealth of information and inspiration.
-
-### User cases
-* A user browsing the list of meals.
-* A user reviewing the recipe details when clicking on a meal.
-* A user going over reviewed recipes in offline mode.
 
 ### Screenshots
 **Display in vertical orientation**
@@ -18,6 +13,11 @@ The application provides users with a seamless experience, empowering them to ef
 | Meal list | Meal details |
 |----------|----------|
 |<kbd><img src="https://user-images.githubusercontent.com/118146780/282130599-e66da311-6772-48e9-b2c6-963bb051f109.png"></kbd> | <kbd><img src="https://user-images.githubusercontent.com/118146780/282130796-e51eaa2c-3c94-4f2c-8558-3aee595ab4bc.png"></kbd> |
+
+### User cases
+* A user browsing the list of meals.
+* A user reviewing the recipe details when clicking on a meal.
+* A user going over reviewed recipes in offline mode.
 
 ### Main flow
 ![Main Flow](https://github.com/salmdoo/SwiftUI-MealCategogies/assets/118146780/bfeb3b7e-5272-4ec5-9117-cb189826e3e1)
