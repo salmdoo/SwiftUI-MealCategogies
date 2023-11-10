@@ -30,7 +30,6 @@ The app enables users to effortlessly explore recipes, complete with instruction
 ![Screenshot 2023-11-10 at 7 05 09 AM](https://github.com/salmdoo/SwiftUI-MealCategogies/assets/118146780/5d9033c5-b20b-4e51-83a1-ede7f50ce0a2)
 
 ### Non-functional requirements
-* Support offline access to the recipes.
 * Code structure support for enhancement, maintenance, and high scalability.
 * Easy to test, high performance, and highly code reusable.
 * Perform consistently in the system, and support error-handling.
