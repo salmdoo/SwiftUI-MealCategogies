@@ -26,7 +26,7 @@ The application allows users to browse recipes, their instructions, and ingredie
 **2. Upon network deactivation, users can access meal details**
 <img width="838" alt="Screenshot 2023-11-09 at 8 13 46 PM" src="https://github.com/salmdoo/SwiftUI-MealCategogies/assets/118146780/0a04314f-2b17-42cf-8d62-72cb843755ed">
 
-### Non-functional
+### Non-functional requirements
 * Support offline access to the recipes.
 * Code structure support for enhancement, maintenance, and high scalability.
 * Easy to test, high performance, and highly code reusable.
