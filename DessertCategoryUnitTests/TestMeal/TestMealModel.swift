@@ -21,7 +21,6 @@ final class TestMealModel: XCTestCase {
         default:
             XCTFail("Expected decodedFailed error but it does not")
         }
-        
     }
     
     func testMealModel_ValidData_ReturnSuccess(){

@@ -16,8 +16,6 @@ struct ContentView: View {
             MealListView(fetcher: fetcher)
         }
     }
-    
-    
 }
 
 struct ContentView_Previews: PreviewProvider {

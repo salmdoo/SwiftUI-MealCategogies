@@ -38,10 +38,7 @@ struct PersistenceController {
         }
     }
     
-    
     func save(meal: MealDetails){
-        
-        
         let results = fetchData()
         
         switch results {

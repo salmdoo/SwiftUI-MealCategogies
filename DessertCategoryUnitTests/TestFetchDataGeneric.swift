@@ -44,7 +44,6 @@ final class TestFetchDataGeneric: XCTestCase {
         static func decodeData(data: Data) -> Result<TestFetchDataGeneric.TestObject, DessertCategory.NetworkError> {
             return .success(successObject)
         }
-        
     }
     
     class TestObjectFailed: DecodeDataProtocol{

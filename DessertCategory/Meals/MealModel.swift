@@ -49,7 +49,6 @@ struct MealList: Decodable, Equatable {
     }
 }
 extension MealList: DecodeDataProtocol {
-    
     typealias T = Self
     static func decodeData(data: Data) -> Result<T, NetworkError> {
         do
