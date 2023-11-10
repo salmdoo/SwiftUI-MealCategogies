@@ -4,8 +4,8 @@
 The application provides users with a seamless experience, empowering them to effortlessly explore a diverse array of recipes. It presents comprehensive details, including instructions and a comprehensive list of ingredients, enhancing the user's culinary journey with a wealth of information and inspiration
 
 ### User cases
-* A user browsing the list of recipes.
-* A user reviewing the recipe details when clicking on a recipe.
+* A user browsing the list of meals.
+* A user reviewing the recipe details when clicking on a meal.
 * A user going over reviewed recipes in offline mode.
 
 ### Screenshots
@@ -19,13 +19,22 @@ The application provides users with a seamless experience, empowering them to ef
 |----------|----------|
 |<kbd><img src="https://user-images.githubusercontent.com/118146780/282130599-e66da311-6772-48e9-b2c6-963bb051f109.png"></kbd> | <kbd><img src="https://user-images.githubusercontent.com/118146780/282130796-e51eaa2c-3c94-4f2c-8558-3aee595ab4bc.png"></kbd> |
 
-
-
 ### Main flow
 ![Main Flow](https://github.com/salmdoo/SwiftUI-MealCategogies/assets/118146780/bfeb3b7e-5272-4ec5-9117-cb189826e3e1)
 * Upon network activation, the app fetches data from an external service and saves meal details to local storage for a seamless user experience.
 * When offline, the app displays recipes saved locally, ensuring uninterrupted access for users without an active network connection.
 
+### High level architechture
+![High level architecture](https://github.com/salmdoo/SwiftUI-MealCategogies/assets/118146780/9c66d4a4-9f7a-40e4-b4f6-fec1ed97261c)
+
+Componentization distinguishes meal and meal details, allowing independent modifications:
+
+* **Model:** Pure structs define object attributes, with the option to implement the DecodeDataProtocol for decoding data when necessary.
+* **View:** Employs a ViewModel, injecting a suitable protocol to retrieve essential data and present it on the screen.
+* **ViewModel:** Receives a FetchProtocol from the View, utilizes the fetchData() method to obtain results, processes the outcomes, and publishes the final result to the views.
+* **DataFetcher:** Defines logic related to data retrieval, implementing the FetchProtocol to retrieve data from various sources, including external systems, RESTful APIs, or local storage
+
+  
 ### System design overview
 ![Screenshot 2023-11-10 at 10 47 46 AM](https://github.com/salmdoo/SwiftUI-MealCategogies/assets/118146780/c776f757-9588-4bd1-8696-e6201c2751cc)
 
