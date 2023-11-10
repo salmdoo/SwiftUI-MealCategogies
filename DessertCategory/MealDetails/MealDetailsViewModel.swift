@@ -17,9 +17,9 @@ class MealDetailsViewModel: ObservableObject {
     
     var networkReponseString: String  = NSLocalizedString("No message", comment: "No message")
     
-    init(mealId: String, fetchData: FetchMealDetailsProtocol) {
+    init(fetchData: FetchMealDetailsProtocol) {
         self.fetchData = fetchData
-        mealDetails = MealDetails(id: mealId)
+        mealDetails = MealDetails()
         logging = HandleLogging.instance
     }
     

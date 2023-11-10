@@ -10,10 +10,18 @@ import SwiftUI
 @main
 struct DessertCategoryApp: App {
     let persistenceController = PersistenceController.instance
+    let networkMonitor = NetworkMonitor.instance
     
+    func fetchData() -> FetchMealsProtocol {
+        var fetcher : FetchMealsProtocol = MealCoreDataFetcher()
+        if networkMonitor.isConnected {
+            fetcher = MealAPIFetcher(urlSession: URLSession.shared)
+        }
+        return fetcher
+    }
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(fetcher: fetchData())
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

@@ -8,11 +8,11 @@
 import Foundation
 
 struct MealDetails: Decodable, Equatable {
-    var id: String = ""
-    var name: String = ""
-    var instructions: String = ""
-    var image: String = ""
-    var ingredients: Dictionary<String, String> = [:]
+    var id: String?
+    var name: String?
+    var instructions: String?
+    var image: String?
+    var ingredients: Dictionary<String, String>?
     
 }
 extension MealDetails: DecodeDataProtocol
@@ -30,10 +30,10 @@ extension MealDetails: DecodeDataProtocol
         
         if let meal = mealsArray.first {
             
-            let id = meal["idMeal"] as? String ?? ""
-            let mealName = meal["strMeal"] as? String ?? ""
-            let mealInstructions = meal["strInstructions"] as? String ?? ""
-            let mealImage = meal["strMealThumb"] as? String ?? ""
+            let id = meal["idMeal"] as? String
+            let mealName = meal["strMeal"] as? String
+            let mealInstructions = meal["strInstructions"] as? String
+            let mealImage = meal["strMealThumb"] as? String
             
             var mealIngredients: Dictionary<String, String> = [:]
             for i in 1...20 {

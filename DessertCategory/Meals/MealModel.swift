@@ -25,7 +25,7 @@ struct Meal: Decodable, Equatable {
         self.id = try container.decode(String.self, forKey: .idMeal)
     }
     
-    init(id: String,name: String, image: String) {
+    init(id: String?,name: String?, image: String?) {
         self.id = id
         self.name = name
         self.image = image
@@ -55,7 +55,8 @@ extension MealList: DecodeDataProtocol {
         do
         {
             let decodedData = try JSONDecoder().decode(T.self, from: data)
-            return Result.success(decodedData)
+            let notNillList = decodedData.meals.filter({ $0.id != nil })
+            return Result.success(MealList(meals: notNillList))
         } catch {
             return Result.failure(NetworkError.decodedFailed)
         }

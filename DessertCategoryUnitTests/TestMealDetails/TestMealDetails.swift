@@ -42,8 +42,9 @@ final class TestMealDetails: XCTestCase {
         expectResult.name = "Apam"
         expectResult.instructions = "check"
         expectResult.image = "https://www.example.com"
-        expectResult.ingredients.updateValue("200ml", forKey:"Milk" )
-        expectResult.ingredients.updateValue("60ml", forKey: "Eggs")
+        expectResult.ingredients = [:]
+        expectResult.ingredients?.updateValue("200ml", forKey:"Milk" )
+        expectResult.ingredients?.updateValue("60ml", forKey: "Eggs")
         
         let res = MealDetails.decodeData(data: inputData!)
         switch res {

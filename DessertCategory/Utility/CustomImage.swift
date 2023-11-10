@@ -20,10 +20,6 @@ struct CustomImage: View {
             Image(systemName: "photo")
         }.clipShape(RoundedRectangle(cornerRadius: 5))
             .frame(maxWidth: maxWidth, maxHeight: maxHeight)
-            .overlay(content: {
-                RoundedRectangle(cornerRadius: 5)
-                    .stroke(Color.gray, lineWidth: 1)
-            })
             .shadow(radius: 5)
     }
 }

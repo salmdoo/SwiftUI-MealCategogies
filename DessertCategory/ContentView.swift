@@ -9,17 +9,19 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-    let networkMonitor = NetworkMonitor.instance
+    var fetcher: FetchMealsProtocol
     
     var body: some View {
         NavigationView {
-            MealListView()
+            MealListView(fetcher: fetcher)
         }
     }
+    
+    
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(fetcher: MealCoreDataFetcher())
     }
 }
