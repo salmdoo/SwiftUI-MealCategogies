@@ -24,11 +24,10 @@ The app enables users to effortlessly explore recipes, complete with instruction
 
 ### Sequence diagrams
 **1. Upon network activation, users can access meal details**
-![Screenshot 2023-11-09 at 4 59 42 PM](https://github.com/salmdoo/SwiftUI-MealCategogies/assets/118146780/16c1836c-46a5-4ca9-adaf-dbc02207f4a7)
-
+![Screenshot 2023-11-10 at 7 05 36 AM](https://github.com/salmdoo/SwiftUI-MealCategogies/assets/118146780/8c7111a9-4b43-4f4d-b7ff-6ba1249cd02f)
 
 **2. Upon network deactivation, users can access meal details**
-<img width="838" alt="Screenshot 2023-11-09 at 8 13 46 PM" src="https://github.com/salmdoo/SwiftUI-MealCategogies/assets/118146780/0a04314f-2b17-42cf-8d62-72cb843755ed">
+![Screenshot 2023-11-10 at 7 05 09 AM](https://github.com/salmdoo/SwiftUI-MealCategogies/assets/118146780/5d9033c5-b20b-4e51-83a1-ede7f50ce0a2)
 
 ### Non-functional requirements
 * Support offline access to the recipes.
