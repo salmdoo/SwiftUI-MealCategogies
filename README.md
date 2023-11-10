@@ -1,7 +1,7 @@
 # Meal Categories
 
 ### Requirement
-The application allows users to browse recipes, their instructions, and ingredients.
+The app enables users to effortlessly explore recipes, complete with instructions and ingredients.
 
 ### User cases
 * A user browsing the list of recipes.
