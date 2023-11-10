@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 protocol DecodeDataProtocol: Decodable {
     associatedtype T
     static func decodeData(data: Data) -> Result<T, NetworkError>
@@ -40,9 +39,3 @@ struct FetchDataGeneric<T> where T: DecodeDataProtocol {
         }
     }
 }
-
-public protocol URLSessionProtocol {
-    func data(from url: URL) async throws -> (Data, URLResponse)
-}
-
-extension URLSession: URLSessionProtocol { }

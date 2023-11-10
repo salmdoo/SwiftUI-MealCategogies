@@ -34,6 +34,7 @@ struct MealCodeDataFetcher: FetchMealsProtocol {
         let result = persistence.fetchData()
         switch result {
         case .success(let res):
+            print("Count is \(res.count)")
             let meal = res.map { Meal(id: $0.id ?? "", name: $0.name ?? "", image: $0.image ?? "") }
             return .success(MealList(meals: meal))
         case .failure(let err):

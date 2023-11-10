@@ -37,7 +37,12 @@ struct MealListView: View {
                                 
                             } placeholder: {
                                 Image(systemName: "photo")
-                            }.frame(maxWidth: 150, maxHeight: 150)
+                            }.clipShape(RoundedRectangle(cornerRadius: 5))
+                                .frame(maxWidth: 150, maxHeight: 150)
+                                .overlay(content: {
+                                    RoundedRectangle(cornerRadius: 5)
+                                        .stroke(Color.gray, lineWidth: 1)
+                                })
                                 .shadow(radius: 5)
                                 .accessibilityIdentifier("mealsViewImage")
                             

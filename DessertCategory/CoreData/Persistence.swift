@@ -42,26 +42,34 @@ struct PersistenceController {
     
     
     func save(meal: MealDetails){
-        let context = container.viewContext
+        
         
         let results = fetchData()
         
         switch results {
-        case .failure(_):
-            let mealDetails = MealCoreModel(context: context)
-            mealDetails.id = meal.id
-            mealDetails.name = meal.name
-            mealDetails.instructions = meal.instructions
-            mealDetails.image = meal.image
-            
-            do {
-                try context.save()
-            } catch {
-                logging.error("PersistenceController - save() - Cannot save meal with meal id \(meal.id) ")
+        case .success(let res):
+            if res.filter({ $0.id == meal.id }).count > 0 {
+                logging.error("PersistenceController - save() - Do not save becase meal exists")
+            } else {
+                saveMeals(meal: meal)
             }
-        case .success(_):
-            logging.error("PersistenceController - save() - Do not save becase meal exists")
+        default:
+            logging.error("PersistenceController - save() - Cannot save meal")
+        }
+    }
+    
+    private func saveMeals(meal: MealDetails){
+        let context = container.viewContext
+        let mealDetails = MealCoreModel(context: context)
+        mealDetails.id = meal.id
+        mealDetails.name = meal.name
+        mealDetails.instructions = meal.instructions
+        mealDetails.image = meal.image
         
+        do {
+            try context.save()
+        } catch {
+            logging.error("PersistenceController - save() - Cannot save meal with meal id \(meal.id) ")
         }
     }
 }

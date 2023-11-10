@@ -37,7 +37,12 @@ struct MealDetailsView: View {
                             img.resizable()
                         } placeholder: {
                             Image(systemName: "photo")
-                        }.frame(width:100, height: 100)
+                        }.clipShape(RoundedRectangle(cornerRadius: 5))
+                            .frame(maxWidth: 100, maxHeight: 100)
+                            .overlay(content: {
+                                RoundedRectangle(cornerRadius: 5)
+                                    .stroke(Color.gray, lineWidth: 0.5)
+                            })
                         .scaledToFill()
                     
                         Text(mealDetailsVM.mealDetails.name)
@@ -73,6 +78,9 @@ struct MealDetailsView: View {
                         
                     }.padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
             }
+        }
+        .onAppear(){
+        
         }
         .alert("Important Message", isPresented: $mealDetailsVM.loadDataFailed, actions: {
             Text("Reload application")
