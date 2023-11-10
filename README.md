@@ -1,17 +1,25 @@
 # Meal Categories
 
 ### Requirement
-The app enables users to effortlessly explore recipes, complete with instructions and ingredients.
+The application provides users with a seamless experience, empowering them to effortlessly explore a diverse array of recipes. It presents comprehensive details, including instructions and a comprehensive list of ingredients, enhancing the user's culinary journey with a wealth of information and inspiration
 
 ### User cases
 * A user browsing the list of recipes.
 * A user reviewing the recipe details when clicking on a recipe.
-* A user going over reviewed recipes when turning off the network.
+* A user going over reviewed recipes in offline mode.
 
 ### Screenshots
-| Meal list | Meal details | Meal list and details (landscape screen)|
-|----------|----------|----------|
-|<img src="https://user-images.githubusercontent.com/118146780/281936309-20eee05f-ea18-47e0-ab6c-bfe92f653784.png" width="150" height="300" alt="Screenshot_20231105_054706"> | <img src="https://user-images.githubusercontent.com/118146780/281936338-c8c54a12-044c-498b-8cd6-7ebd9dd8d25c.png" width="150" height="300" alt="Screenshot_20231105_054706"> | <img src="https://user-images.githubusercontent.com/118146780/281936329-15af9bdf-57ef-4461-859a-bfabca7c2620.png" width="300" height="150" alt="Screenshot_20231105_054706"> <img src="https://user-images.githubusercontent.com/118146780/281936336-c94203f1-2fd6-4dfd-bf70-e8c105b570b8.png" width="300" height="150" alt="Screenshot_20231105_054706">|
+**Display in vertical orientation**
+| Meal list | Meal details |
+|----------|----------|
+|<kbd><img src="https://user-images.githubusercontent.com/118146780/282129797-c6303cf1-856b-4138-aa58-3cfbe06376d7.png"></kbd> | <kbd><img src="https://user-images.githubusercontent.com/118146780/282130027-69a0faea-25c3-490d-98ca-33cb1443c629.png"></kbd> | 
+
+**Display in horizontal orientation.**
+| Meal list | Meal details |
+|----------|----------|
+|<kbd><img src="https://user-images.githubusercontent.com/118146780/282130599-e66da311-6772-48e9-b2c6-963bb051f109.png"></kbd> | <kbd><img src="https://user-images.githubusercontent.com/118146780/282130796-e51eaa2c-3c94-4f2c-8558-3aee595ab4bc.png"></kbd> |
+
+
 
 ### Main flow
 ![Main Flow](https://github.com/salmdoo/SwiftUI-MealCategogies/assets/118146780/bfeb3b7e-5272-4ec5-9117-cb189826e3e1)
@@ -19,15 +27,14 @@ The app enables users to effortlessly explore recipes, complete with instruction
 * When offline, the app displays recipes saved locally, ensuring uninterrupted access for users without an active network connection.
 
 ### System design overview
-![Screenshot 2023-11-10 at 6 58 43 AM](https://github.com/salmdoo/SwiftUI-MealCategogies/assets/118146780/f3e11235-de5a-4f48-ba04-3acd76bddcf8)
-
+![Screenshot 2023-11-10 at 10 47 46 AM](https://github.com/salmdoo/SwiftUI-MealCategogies/assets/118146780/c776f757-9588-4bd1-8696-e6201c2751cc)
 
 ### Sequence diagrams
 **1. Upon network activation, users can access meal details**
-![Screenshot 2023-11-10 at 7 05 36 AM](https://github.com/salmdoo/SwiftUI-MealCategogies/assets/118146780/8c7111a9-4b43-4f4d-b7ff-6ba1249cd02f)
+![Screenshot 2023-11-10 at 10 49 33 AM](https://github.com/salmdoo/SwiftUI-MealCategogies/assets/118146780/e9a55f55-10e6-4524-95c1-5709cbc6987c)
 
 **2. Upon network deactivation, users can access meal details**
-![Screenshot 2023-11-10 at 7 05 09 AM](https://github.com/salmdoo/SwiftUI-MealCategogies/assets/118146780/5d9033c5-b20b-4e51-83a1-ede7f50ce0a2)
+![Screenshot 2023-11-10 at 10 50 38 AM](https://github.com/salmdoo/SwiftUI-MealCategogies/assets/118146780/9b0d3e85-6d21-49e5-8aa6-bcaf2993499b)
 
 ### Non-functional requirements
 * Code structure support for enhancement, maintenance, and high scalability.
@@ -49,7 +56,7 @@ The app enables users to effortlessly explore recipes, complete with instruction
 * Design pattern: MVVM, Singleton, Factory, Dependency Injection, Observer
 * Web services/Notification: RESTful, JSON, Async/Await, Offline Notification
 * Multi threads: Task, DispatchQueue
-* Storage: Core Data
+* Storage: Data Persistency using Core Data
 * Testing: XCTest, XCUITest, integration test, performance test
 * Code management: Git, Github
 * SDK/Tools: XCode, Postman
