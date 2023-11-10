@@ -66,7 +66,7 @@ final class TestFetchDataGeneric: XCTestCase {
         MockFetchDataGeneric.responseError = NetworkError.invalidUrl
         
         let expectation = self.expectation(description: "Fetch Data is failed because of invalidUrl")
-        let fetchDataGeneric = FetchDataGeneric<TestObject>(urlSession: urlSession!, urlApi: "String")
+        let fetchDataGeneric = FetchDataGeneric<TestObject>(urlSession: urlSession!, urlApi: "")
         
         let result = await fetchDataGeneric.fetchData()
         

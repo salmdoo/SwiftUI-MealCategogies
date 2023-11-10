@@ -33,17 +33,7 @@ struct MealDetailsView: View {
             else {
                 LazyVStack(alignment: .leading) {
                     HStack {
-                        AsyncImage(url: URL(string: mealDetailsVM.mealDetails.image )) { img in
-                            img.resizable()
-                        } placeholder: {
-                            Image(systemName: "photo")
-                        }.clipShape(RoundedRectangle(cornerRadius: 5))
-                            .frame(maxWidth: 100, maxHeight: 100)
-                            .overlay(content: {
-                                RoundedRectangle(cornerRadius: 5)
-                                    .stroke(Color.gray, lineWidth: 0.5)
-                            })
-                        .scaledToFill()
+                        CustomImage(url: mealDetailsVM.mealDetails.image, maxWidth: 100, maxHeight: 100)
                     
                         Text(mealDetailsVM.mealDetails.name)
                             .font(.title2)

@@ -31,19 +31,7 @@ struct MealListView: View {
                         MealDetailsView(mealId: item.id ?? "")
                     } label: {
                         VStack (alignment: .leading) {
-                            AsyncImage(url: URL(string: item.image ?? "")) { img in
-                                img.resizable()
-                                    .scaledToFit()
-                                
-                            } placeholder: {
-                                Image(systemName: "photo")
-                            }.clipShape(RoundedRectangle(cornerRadius: 5))
-                                .frame(maxWidth: 150, maxHeight: 150)
-                                .overlay(content: {
-                                    RoundedRectangle(cornerRadius: 5)
-                                        .stroke(Color.gray, lineWidth: 1)
-                                })
-                                .shadow(radius: 5)
+                            CustomImage(url: item.image ?? "", maxWidth: 150, maxHeight: 150)
                                 .accessibilityIdentifier("mealsViewImage")
                             
                             Text(item.name ?? "")

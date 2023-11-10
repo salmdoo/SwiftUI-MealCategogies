@@ -15,6 +15,7 @@
 		1470383B2AFC839D002B17E4 /* MealFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1470383A2AFC839D002B17E4 /* MealFetcher.swift */; };
 		1470383D2AFC83BA002B17E4 /* MealDetailsFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1470383C2AFC83BA002B17E4 /* MealDetailsFetcher.swift */; };
 		147038402AFD0635002B17E4 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1470383F2AFD0635002B17E4 /* NetworkMonitor.swift */; };
+		147038432AFE64BB002B17E4 /* CustomImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147038422AFE64BB002B17E4 /* CustomImage.swift */; };
 		1474B6B02AFA85DA007B5B68 /* TestMealDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1474B6AF2AFA85DA007B5B68 /* TestMealDetails.swift */; };
 		1474B6B22AFA8C19007B5B68 /* TestMealModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1474B6B12AFA8C19007B5B68 /* TestMealModel.swift */; };
 		1474B6B42AFA90C0007B5B68 /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1474B6B32AFA90C0007B5B68 /* APIEndpoint.swift */; };
@@ -67,6 +68,7 @@
 		1470383A2AFC839D002B17E4 /* MealFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealFetcher.swift; sourceTree = "<group>"; };
 		1470383C2AFC83BA002B17E4 /* MealDetailsFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailsFetcher.swift; sourceTree = "<group>"; };
 		1470383F2AFD0635002B17E4 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
+		147038422AFE64BB002B17E4 /* CustomImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImage.swift; sourceTree = "<group>"; };
 		1474B6AF2AFA85DA007B5B68 /* TestMealDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMealDetails.swift; sourceTree = "<group>"; };
 		1474B6B12AFA8C19007B5B68 /* TestMealModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMealModel.swift; sourceTree = "<group>"; };
 		1474B6B32AFA90C0007B5B68 /* APIEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoint.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				1470380F2AFBCEF4002B17E4 /* RotateView.swift */,
+				147038422AFE64BB002B17E4 /* CustomImage.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -432,6 +435,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				147038142AFC1FDA002B17E4 /* MealDataModel.xcdatamodeld in Sources */,
+				147038432AFE64BB002B17E4 /* CustomImage.swift in Sources */,
 				147E4EDE2AF9452000E0A907 /* ContentView.swift in Sources */,
 				147037FE2AFBA5BB002B17E4 /* HandleLogging.swift in Sources */,
 				147038372AFC39E2002B17E4 /* Persistence.swift in Sources */,
