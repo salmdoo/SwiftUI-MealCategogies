@@ -27,10 +27,10 @@ The application provides users with a seamless experience, empowering them to ef
 ### High level architechture
 ![High level architecture](https://github.com/salmdoo/SwiftUI-MealCategogies/assets/118146780/9c66d4a4-9f7a-40e4-b4f6-fec1ed97261c)
 
-Componentization distinguishes meal and meal details, allowing independent modifications:
+Apply *Vertical Slice Architecture* to build the application. Componentization distinguishes meal and meal details, allowing independent modifications
 
 * **Model:** Pure structs define object attributes, with the option to implement the DecodeDataProtocol for decoding data when necessary.
-* **View:** Employs a ViewModel, injecting a suitable protocol to retrieve essential data and present it on the screen.
+* **View:** Employs a ViewModel, injecting a suitable protocol to retrieve and present essential data on the screen.
 * **ViewModel:** Receives a FetchProtocol from the View, utilizes the fetchData() method to obtain results, processes the outcomes, and publishes the final result to the views.
 * **DataFetcher:** Defines logic related to data retrieval, implementing the FetchProtocol to retrieve data from various sources, including external systems, RESTful APIs, or local storage
 
@@ -46,10 +46,11 @@ Componentization distinguishes meal and meal details, allowing independent modif
 ![Screenshot 2023-11-10 at 10 50 38 AM](https://github.com/salmdoo/SwiftUI-MealCategogies/assets/118146780/9b0d3e85-6d21-49e5-8aa6-bcaf2993499b)
 
 ### Non-functional requirements
-* Code structure support for enhancement, maintenance, and high scalability.
-* Easy to test, high performance, and highly code reusable.
-* Perform consistently in the system, and support error-handling.
-* Support friendly user interface, take basic app design principles into account (load to refresh, device rotation).
+* Optimized for Efficiency and Scalability: *Utilizing Vertical Slice Architecture, generic classes, and adhering to POP principles ensures a robust, easily expandable, and test-friendly code structure.*
+* Highly code reusable, performs consistently in the system: *Employing POP and MVVM architecture ensures maximum code reuse and consistent performance. Modern async/await pattern manages asynchronous API requests seamlessly.* 
+* Proactive Error Handling: *Enhance user experience by promptly alerting users of any application failures through intuitive error messages.*
+* Support friendly user interface: *The app includes pull-to-refresh for easy meal reloading and adapts dynamically to device orientation.*
+* Access app in offline mode: *Core Data enables robust data persistency for offline recipe review while using the NWPathMonitor to adjust meal fetching based on device network status. *
 
 ### Enhancement
 * Enable offline access to recipe images and ingredients: *Even without an internet connection, the app downloads images and ingredient details for offline access.*
@@ -65,7 +66,7 @@ Componentization distinguishes meal and meal details, allowing independent modif
 * Design pattern: MVVM, Singleton, Factory, Dependency Injection, Observer
 * Web services/Notification: RESTful, JSON, Async/Await, Offline Notification
 * Multi threads: Task, DispatchQueue
-* Storage: Data Persistency using Core Data
+* Storage: Core Data
 * Testing: XCTest, XCUITest, integration test, performance test
 * Code management: Git, Github
 * SDK/Tools: XCode, Postman
