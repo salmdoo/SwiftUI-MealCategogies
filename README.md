@@ -18,6 +18,8 @@ The application allows users to browse recipes, their instructions, and ingredie
 * Upon network activation, the app fetches data from an external service and saves meal details to local storage for a seamless user experience.
 * When offline, the app displays recipes saved locally, ensuring uninterrupted access for users without an active network connection.
 
+### System design overview
+
 ### Sequence diagrams
 **1. Upon network activation, users can access meal details**
 ![Screenshot 2023-11-09 at 4 59 42 PM](https://github.com/salmdoo/SwiftUI-MealCategogies/assets/118146780/16c1836c-46a5-4ca9-adaf-dbc02207f4a7)
@@ -31,13 +33,14 @@ The application allows users to browse recipes, their instructions, and ingredie
 * Code structure support for enhancement, maintenance, and high scalability.
 * Easy to test, high performance, and highly code reusable.
 * Perform consistently in the system, and support error-handling.
-* Support friendly user interface, take basic app design principles into account (load to refresh, simple animation).
+* Support friendly user interface, take basic app design principles into account (load to refresh, device rotation, simple animation).
 
 ### Enhancement
 * Enable offline access to recipe images and ingredients: *Even without an internet connection, the app downloads images and ingredient details for offline access.*
 * Stay seamlessly connected with automatic online/offline data access: *The app adapts to the network status effortlessly, the user can access the data online or offline automatically.*
 * Stay in the loop with recipe updates: *Users receive friendly notifications and inform them whenever a recipe is updated on the server.*
 * Customize your reading experience: *Users can customize the app's font size to suit their preferences.*
+* Support multiple platforms: *User can access the application on iPad, watchOS, or macOS*
 
 ### Technologies applied: 
 * Platform: iOS
