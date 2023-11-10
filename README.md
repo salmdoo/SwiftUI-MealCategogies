@@ -1,7 +1,7 @@
 # Meal Categories
 
 ### Requirement
-The application provides users with a seamless experience, empowering them to effortlessly explore a diverse array of recipes. It presents comprehensive details, including instructions and a comprehensive list of ingredients, enhancing the user's culinary journey with a wealth of information and inspiration
+The application provides users with a seamless experience, empowering them to effortlessly explore a diverse array of recipes. It presents comprehensive details, including instructions and a comprehensive list of ingredients, enhancing the user's culinary journey with a wealth of information and inspiration.
 
 ### User cases
 * A user browsing the list of meals.
@@ -50,14 +50,14 @@ Apply *Vertical Slice Architecture* to build the application. Componentization d
 * Highly code reusable, performs consistently in the system: *Employing POP and MVVM architecture ensures maximum code reuse and consistent performance. Modern async/await pattern manages asynchronous API requests seamlessly.* 
 * Proactive Error Handling: *Enhance user experience by promptly alerting users of any application failures through intuitive error messages.*
 * Support friendly user interface: *The app includes pull-to-refresh for easy meal reloading and adapts dynamically to device orientation.*
-* Access app in offline mode: *Core Data enables robust data persistency for offline recipe review while using the NWPathMonitor to adjust meal fetching based on device network status. *
+* Access app in offline mode: *Core Data enables robust data persistency for offline recipe review while using the NWPathMonitor to adjust meal fetching based on device network status.*
 
 ### Enhancement
 * Enable offline access to recipe images and ingredients: *Even without an internet connection, the app downloads images and ingredient details for offline access.*
 * Stay seamlessly connected with automatic online/offline data access: *The app adapts to the network status effortlessly, the user can access the data online or offline automatically.*
 * Stay in the loop with recipe updates: *Users receive friendly notifications and inform them whenever a recipe is updated on the server.*
 * Customize your reading experience: *Users can customize the app's font size to suit their preferences.*
-* Support multiple platforms: *User can access the application on iPad, watchOS, or macOS*
+* Support multiple platforms: *User can access the application on iPad, watchOS, or macOS.*
 
 ### Technologies applied: 
 * Platform: iOS
